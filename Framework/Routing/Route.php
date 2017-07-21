@@ -1,6 +1,8 @@
 <?php
 
-namespace Framework;
+namespace Framework\Routing;
+
+use Framework\Core;
 
 class Route extends Core {
     private static $Url;

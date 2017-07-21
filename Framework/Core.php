@@ -2,7 +2,7 @@
 
 namespace Framework;
 
-use Framework\WPRouteApi\Routing;
+use Framework\Routing\Route;
 
 class Core {
 
@@ -19,7 +19,7 @@ class Core {
     }
 
     public function run(){
-        $routing = new Routing(self::$Routes);
+        $routing = new Route(self::$Routes);
         $this->CurrentRoute = $routing->run();
         if(is_object($this->CurrentRoute['controller'])){
             $this->executeClosure($this->CurrentRoute['controller'],
