@@ -1,0 +1,33 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\Controller;
+use App\Model\Model;
+use Framework\Render;
+
+class @name extends Controller {
+
+    public function index(){
+
+    }
+
+    public function create(){
+        
+    }
+
+    public function edit(){
+        
+    }
+
+    public function update(){
+        
+    }
+
+    public function show(){
+        
+    }
+
+    public function delete(){
+        
+    }
+}

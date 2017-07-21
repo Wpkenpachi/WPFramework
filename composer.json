@@ -1,0 +1,23 @@
+{
+    "name": "wp/framework",
+    "description": "Micro-framework PHP, baseada na MVC Pattern.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wesley Paulo",
+            "email": "wesley_paulo_job@outlook.com"
+        }
+    ],
+    "require": {
+
+    },
+    "require-dev":{
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": ["App/", "Database/", "Http/"],
+            "Framework\\": "Framework/"
+        }
+    }
+}

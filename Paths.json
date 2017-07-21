@@ -1,0 +1,8 @@
+{
+    "Controller": "//App//Controller//",
+    "Model": "//App//Model//",
+    "View": "//App//Resource//View//",
+    "Template": "//App//Resource//Template//",
+    "Dbmap": "//Database//Dbmap//",
+    "Dependencie": "//Framework//Dependencie//"
+}

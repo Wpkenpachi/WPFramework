@@ -1,0 +1,9 @@
+- View
+- Controllers
+- Model
+- Repository
+- Middleware
+- Generator
+- Migrations (Dbmaps)
+
+-- Sistema de Rotas, amigáveis.

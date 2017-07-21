@@ -1,0 +1,10 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\Controller;
+use App\Model\Model;
+use Framework\Render;
+
+class @name extends Controller {
+    
+}
