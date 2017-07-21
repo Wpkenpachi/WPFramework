@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 include __DIR__ . '/../App/config.php';
 
 use Framework\Core;
-use Framework\Routing\Route;
+use Framework\Route;
 
 $app = new Core;
 

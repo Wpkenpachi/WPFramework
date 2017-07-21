@@ -1,4 +1,7 @@
 <?php
+
+namespace Framework\Routing;
+
 class Api {
     private $Method;
     private $RequestBody;

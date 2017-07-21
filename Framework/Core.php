@@ -2,7 +2,7 @@
 
 namespace Framework;
 
-use Framework\Routing\Route;
+use Framework\Routing\Router;
 
 class Core {
 
@@ -13,13 +13,14 @@ class Core {
     protected $CurrentRoute;
 
     function __construct(){
-        $paths_file = __DIR__ . '/../../Paths.json';
+        
+        $paths_file = __DIR__ . '/../Paths.json';
         $paths_contents = file_get_contents($paths_file);
         $this->Paths = json_decode($paths_contents, true);
     }
 
     public function run(){
-        $routing = new Route(self::$Routes);
+        $routing = new Router(self::$Routes);
         $this->CurrentRoute = $routing->run();
         if(is_object($this->CurrentRoute['controller'])){
             $this->executeClosure($this->CurrentRoute['controller'],
