@@ -1,0 +1,14 @@
+#!/usr/bin/php -q
+<?php
+
+include dirname(__FILE__) . '/vendor/autoload.php';
+
+include dirname(__FILE__) . '/Framework/Generator/WPGenerator.php';
+include dirname(__FILE__) . '/Framework/Generator/Functions/Make.php';
+include dirname(__FILE__) . '/Framework/Generator/Functions/Listing.php';
+include dirname(__FILE__) . '/Framework/Generator/Functions/Map.php';
+
+
+WPGenarator::cmd('make', 'resource', 'pageController', ['-res', '-rep'])->run();
+
+

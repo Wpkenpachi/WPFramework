@@ -4,7 +4,8 @@ namespace App\Controller;
 use App\Controller\Controller;
 use App\Model\Model;
 use Framework\Render;
+@repository
 
 class @name extends Controller {
-    
+@resource
 }

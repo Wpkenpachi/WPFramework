@@ -14,9 +14,9 @@ Route::get('root', function(){
 
 Route::get('login', 'homeController@index');
 
-Route::post('login', 'homeController@validate');
+Route::get('user', 'homeController@show');
 
-Route::get('dashboard/{idade}/{nome}', 'dashboardController@index');
+Route::post('login', 'homeController@validate');
 
 Route::post('teste/{nome}/{sobrenome}', function($get, $body){
     echo "Meu nome e {$get[1]} {$get[2]}. <br>";

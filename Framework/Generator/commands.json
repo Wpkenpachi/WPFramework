@@ -1,0 +1,10 @@
+{
+    "WP": {
+        "make": ["controller","repository", "view", "template", "resource"],
+        "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps"],
+        "map": ["up", "down"]
+    },
+    "USER": {
+        "make": ["controller","repository", "view", "template"]
+    }
+}

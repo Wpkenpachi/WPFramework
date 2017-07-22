@@ -2,8 +2,7 @@
 
 namespace App\Repository;
 
-class Repository {
+class @name extends Repository {
 
-    
     
 }
