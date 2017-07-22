@@ -9,6 +9,6 @@ include dirname(__FILE__) . '/Framework/Generator/Functions/Listing.php';
 include dirname(__FILE__) . '/Framework/Generator/Functions/Map.php';
 
 
-WPGenarator::cmd('make', 'resource', 'pageController', ['-res', '-rep'])->run();
+WPGenarator::cmd('listing', 'resource', 'pageController', ['-res', '-rep'])->run();
 
 

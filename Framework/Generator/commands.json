@@ -1,10 +1,19 @@
 {
     "WP": {
-        "make": ["controller","repository", "view", "template", "resource"],
+        "make": ["controller","repository", "view", "template", "resource", "dir"],
         "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps"],
         "map": ["up", "down"]
     },
     "USER": {
         "make": ["controller","repository", "view", "template"]
+    },
+    "CMD_REPLACE":{
+        "controller": {
+            "tag": ["name", "repository", "resource"],
+            "replace": ["$this->Name", "$this->Template", "$this->Template"]
+        },
+        "repository": {
+            "tag": ["name", "resource"]
+        }
     }
 }

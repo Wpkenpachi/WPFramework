@@ -13,6 +13,7 @@ class Make {
     // Result
     private $Destination;
     private $Template;
+    private $Content;
 
 
     function __construct($type, $name, array $flags, $paths){
@@ -38,6 +39,12 @@ class Make {
             $this->checkTargetDir();
         }else{
             echo "O parametro setado para o comando ".__CLASS__." nao existe.\n";
+            echo "Para criar esse comando, va em '/Framework/Generator/commands.json' e crie assim: \n";
+            echo "\"USER\": {\n";
+            echo "\t \"meuComando\": [\"param1\",\"param2\", {...}]\n";
+            echo "\t },\n";
+            echo "\t \"meusOutrosComandos\": [\"param1\",\"param2\", {...}]\n";
+            echo " }\n";
             die;
         }
     }
@@ -47,11 +54,19 @@ class Make {
         
         $_type = ucfirst(strtolower($this->Filetype));
         $_paths = $this->Paths;
-        if( array_key_exists($_type, $_paths["App"]) ){
-            $this->Destination = $_paths["App"][$_type] . $this->Filename . $_type;
-            $this->checkTmpDir();
+        $_type_dir = isset($_paths["App"][$_type]) ? dirname(__FILE__, 4).$_paths["App"][$_type] : null;
+        if(  array_key_exists($_type, (array)$_paths["App"]) ){
+            if( is_dir( $_type_dir )  ){
+                $this->Destination = $_paths["App"][$_type] . $this->Filename . $_type;
+                $this->checkTmpDir();
+            }else{
+                echo "Nao existe um diretorio  criado para arquivos do tipo {$_type}.\n";
+                die;
+            }
         }else{
-            echo "Nao existe um diretorio para arquivos do tipo {$_type}.\n";
+            echo "Nao existe um diretorio setado para arquivos do tipo {$_type}.\n";
+            echo "Para setar um diretorio, va no arquivo 'Paths.json' e crie:\n";
+            echo "\"{$_type}\": \"//(directorie?)//(directorie?)//\", \n";
             die;
         }
     }
@@ -65,15 +80,23 @@ class Make {
 
         if( file_exists($_template) ){
             $this->Template = file_get_contents($_template);
+            $this->replacement($this->Template);
         }else{
             echo "Nao existe um template para arquivos do tipo {$_type}.\n";
+            echo "Crie um template para ele no diretorio: {$_template}\n";
+            echo "Especificamente com o nome: {$_type} e sem extensao. \n";
             die;
         }
     }
 
     // Replace Variables from template and return new content
-    private function replacement(){
-
+    private function replacement($content){
+        $_type = strtolower( $this->Filetype );
+        $_paths = $this->Paths;
+        if( array_key_exists( $_type ,$_paths["Cmd"]["CMD_REPLACE"] ) ){
+            $contet = str_replace( $_paths["Cmd"]["CMD_REPLACE"][$_type]["tag"] ,  $_paths["Cmd"]["CMD_REPLACE"][$_type]["replace"] , $content );
+        }
+        die($content);
     }
 
 }
