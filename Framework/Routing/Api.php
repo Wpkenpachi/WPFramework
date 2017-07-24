@@ -34,7 +34,7 @@ class Api {
                 if($this->checkContentType($this->Data) == 'json'){
                     $this->Data = json_decode($this->RequestBody, true);;
                 }elseif($this->checkContentType($this->Data) == 'form'){
-                    $this->Data = urldecode($this->RequestBody);
+                    parse_str(urldecode($this->RequestBody), $this->Data);
                 }elseif($this->checkContentType($this->Data) == 'multipart'){
                     $this->Data = $_FILE;
                 }
@@ -45,7 +45,7 @@ class Api {
                 if($this->checkContentType($this->Data) == 'json'){
                     $this->Data = json_decode($this->RequestBody, true);;
                 }elseif($this->checkContentType($this->Data) == 'form'){
-                    $this->Data = urldecode($this->RequestBody);
+                    parse_str(urldecode($this->RequestBody), $this->Data);
                 }elseif($this->checkContentType($this->Data) == 'multipart'){
                     $this->Data = $_FILE;
                 }
@@ -54,7 +54,7 @@ class Api {
                 if($this->checkContentType($this->Data) == 'json'){
                     $this->Data = json_decode($this->RequestBody, true);;
                 }elseif($this->checkContentType($this->Data) == 'form'){
-                    $this->Data = urldecode($this->RequestBody);
+                    parse_str(urldecode($this->RequestBody), $this->Data);
                 }elseif($this->checkContentType($this->Data) == 'multipart'){
                     $this->Data = $_FILE;
                 }
@@ -63,7 +63,7 @@ class Api {
                 if($this->checkContentType($this->Data) == 'json'){
                     $this->Data = json_decode($this->RequestBody, true);;
                 }elseif($this->checkContentType($this->Data) == 'form'){
-                    $this->Data = urldecode($this->RequestBody);
+                    parse_str(urldecode($this->RequestBody), $this->Data);
                 }elseif($this->checkContentType($this->Data) == 'multipart'){
                     $this->Data = $_FILE;
                 }
@@ -84,5 +84,11 @@ class Api {
         }else{
             echo 'Error, content-type invalid!';die();
         }
+    }
+
+    public function resolveXForm($string){
+        parse_str($string, $_vars);
+
+        die(var_dump($_vars));
     }
 }

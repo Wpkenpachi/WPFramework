@@ -15,7 +15,7 @@ use DB\WPDataTable;
 use DB\WPBlueprint;
 
 
-WPGenarator::cmd('map', 'down', 'usuarios', ['-res', '-rep'])->run();
+WPGenarator::cmd('make', 'controller', 'business', [])->run();
 
 
 
