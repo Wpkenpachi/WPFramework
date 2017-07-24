@@ -1,5 +1,7 @@
 <?php
 
+//namespace Framework\Generator;
+
 class Make {
 
     // Command Line
@@ -33,16 +35,15 @@ class Make {
     private function checkCmdParam(){
 
         $_func = strtolower(__CLASS__);
-        $_type = $this->Filetype;
+        $_type = strtolower($this->Filetype);
         $_paths = $this->Paths;
-        if( in_array($_type, $_paths["Cmd"]["WP"][$_func]) || in_array($_type, $_paths["Cmd"]["USER"][$_func]) ){
+        if( in_array($_type, $_paths["Cmd"]["WP"][$_func]) ){
             $this->checkTargetDir();
         }else{
             echo "O parametro setado para o comando ".__CLASS__." nao existe.\n";
             echo "Para criar esse comando, va em '/Framework/Generator/commands.json' e crie assim: \n";
-            echo "\"USER\": {\n";
-            echo "\t \"meuComando\": [\"param1\",\"param2\", {...}]\n";
-            echo "\t },\n";
+            echo "\"WP\": {\n";
+            echo "\t \"meuComando\": [\"param1\",\"param2\", {...}],\n";
             echo "\t \"meusOutrosComandos\": [\"param1\",\"param2\", {...}]\n";
             echo " }\n";
             die;
@@ -51,7 +52,7 @@ class Make {
 
     // Check the directorie for where this type will, when created.
     public function checkTargetDir(){
-        
+        // type with first charin uppercase 'Controller'
         $_type = ucfirst(strtolower($this->Filetype));
         $_paths = $this->Paths;
         $_type_dir = isset($_paths["App"][$_type]) ? dirname(__FILE__, 4).$_paths["App"][$_type] : null;

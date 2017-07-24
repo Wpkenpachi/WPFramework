@@ -1,5 +1,7 @@
 <?php
 
+//namespace Framework\Generator;
+
 class WPGenarator {
 
     // Instance
@@ -53,7 +55,7 @@ class WPGenarator {
    
    public function run(){
         $_func = strtolower($this->Func);
-        if( array_key_exists($_func, $this->CmdsPath["WP"]) || array_key_exists($_func, $this->CmdsPath["USER"]) ){
+        if( array_key_exists($_func, $this->CmdsPath["WP"]) ){
             $_func = ucfirst(strtolower($this->Func));
             $paths = array_merge([],['App' => $this->AppPath], ['Cmd' =>$this->CmdsPath], ['Ucmd' => $this->UserCmdPath], ['Tmp' => $this->TmpPath]);
             $class = new $_func($this->Param, $this->Name, (array)$this->Flags, $paths);    
@@ -63,20 +65,3 @@ class WPGenarator {
         }
    }
 }
-
-/*
-make:controller  @name @flag1 @flag2
-    :repository
-    :view
-    :template
-list:controllers @name @flag1 @flag2
-    :repositorys
-    :views
-    :templates
-    :routes
-    :dbmaps
-dbmap:up         @flag1[@name]
-     :down
-*/
-
-

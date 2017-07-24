@@ -11,6 +11,14 @@ class ComposerStaticInit093084a1cfc5418ee4c96f1ecae7ed85
         array (
             'Framework\\' => 10,
         ),
+        'D' => 
+        array (
+            'DB\\' => 3,
+        ),
+        'C' => 
+        array (
+            'Core\\' => 5,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -22,11 +30,18 @@ class ComposerStaticInit093084a1cfc5418ee4c96f1ecae7ed85
         array (
             0 => __DIR__ . '/../..' . '/Framework',
         ),
+        'DB\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Database',
+        ),
+        'Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',
-            1 => __DIR__ . '/../..' . '/Database',
-            2 => __DIR__ . '/../..' . '/Http',
+            1 => __DIR__ . '/../..' . '/Http',
         ),
     );
 

@@ -1,11 +1,8 @@
 {
     "WP": {
-        "make": ["controller","repository", "view", "template", "resource", "dir"],
-        "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps"],
+        "make": ["controller", "services"],
+        "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps", "services"],
         "map": ["up", "down"]
-    },
-    "USER": {
-        "make": ["controller","repository", "view", "template"]
     },
     "CMD_REPLACE":{
         "controller": {

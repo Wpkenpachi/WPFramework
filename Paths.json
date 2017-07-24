@@ -1,11 +1,10 @@
 {
     "Controller": "//App//Controller//",
-    "Resource": "//Resource//",
     "Model": "//App//Model//",
     "View": "//App//Resource//View//",
     "Repository": "//App//Repository//",
     "Template": "//App//Resource//Template//",
-    "Dbmap": "//Database//Dbmap//",
+    "Map": "//App//Map//",
     "Dependencie": "//Framework//Dependencie//",
     "Command": "//Framework//Generator//",
     "Tmp": "//Framework//Template//"

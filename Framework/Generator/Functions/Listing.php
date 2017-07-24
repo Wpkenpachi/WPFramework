@@ -1,5 +1,14 @@
 <?php
 
+/**
+* - First we have a param check. This param exists? (checkCmdParam)
+* - Second if the param exists, we check if this param, have (checkTargetDir)
+*   a directorie default setted to be listed.
+* - Third get the list of files in this directorie and show it. (getListOfFiles)
+*/
+
+//namespace Framework\Generator\Functions;
+
 class Listing {
     // Command Line
     private $Filetype;
@@ -28,14 +37,13 @@ class Listing {
         $_func = strtolower(__CLASS__);
         $_type = $this->Filetype;
         $_paths = $this->Paths;
-        if( array_key_exists($_func, $_paths["Cmd"]["WP"]) || array_key_exists($_func, $_paths["Cmd"]["USER"]) ){
+        if( array_key_exists($_func, $_paths["Cmd"]["WP"]) ){
             $this->checkTargetDir();
         }else{
             echo "O parametro setado para o comando ".__CLASS__." nao existe.\n";
             echo "Para criar esse comando, va em '/Framework/Generator/commands.json' e crie assim: \n";
-            echo "\"USER\": {\n";
-            echo "\t \"meuComando\": [\"param1\",\"param2\", {...}]\n";
-            echo "\t },\n";
+            echo "\"WP\": {\n";
+            echo "\t \"meuComando\": [\"param1\",\"param2\", {...}],\n";
             echo "\t \"meusOutrosComandos\": [\"param1\",\"param2\", {...}]\n";
             echo " }\n";
             die;
@@ -68,7 +76,7 @@ class Listing {
     private function getListOfFiles(){
         $this->ListOfFiles = scandir(substr_replace($this->Destination, "", -1));
         $_notEmpty = false;
-        echo ":====== ". __CLASS__ . ucfirst(strtolower($this->Filetype)) . " ======:\n";
+        echo ":====== ". __CLASS__ .'-'.ucfirst(strtolower($this->Filetype)) . " ======:\n";
         array_walk($this->ListOfFiles,function($file) use (&$_notEmpty){
             if(pathinfo($file, PATHINFO_EXTENSION) == 'php'){
                 $_notEmpty = true;
