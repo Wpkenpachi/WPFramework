@@ -13,6 +13,7 @@ class Render {
         $this->Paths = json_decode($paths_contents, true);
     }
 
+
     public static function run(){
         if(is_null(self::$instance)){
             self::$instance = new self();

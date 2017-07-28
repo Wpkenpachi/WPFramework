@@ -22,14 +22,12 @@ class homeRepository extends Repository {
             ->select('usuarios', '*')
             ->where("{$field[0]}", "{$value}")
             ->single();
-
             return $model;
         }else{
             $model = Model::exec()
             ->select('usuarios', '*')
             ->where("id", $param)
             ->single();
-
             return $model;
         }
     }

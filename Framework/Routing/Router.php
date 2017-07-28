@@ -84,7 +84,7 @@ class Router {
         // é preenchida com a url salva, que for compatível e para o processo de
         // laço de percorrimento de urls
         foreach($this->Routes as $route){
-            if($route['url'] == $this->Url_Current){
+            if($route['url'] == $this->Url_Current && $route['Request Method'] == $this->Request_Method){
                 $this->Route_Compatible = $route['url'];
                 $this->Route_Controller = $route['controller'];
                 $this->Route_Action = $route['action'];
@@ -112,21 +112,29 @@ class Router {
             $route_url_keys = explode('/', $route['url']);// broken route
             preg_match_all($this->Find_Var_Regex, $route['url'], $how_much_vars);// quantidade de variáveis
             $difereces = array_diff_assoc($url_tree_keys, $route_url_keys); // diferença entre route_url e current_url
-            
-            // Primeira subcomparação: Verifica igualdade na quantidade de branches
-            if(count($url_tree_keys) == count($route_url_keys)){
-                // Segunda subcomparação: Verifica igualdade branch à branch
-                if( count($difereces) == count($how_much_vars[0]) ){
-                    // Chama função que verifica se isso é uma variável de url {id}
-                    // se for a compatibilidade dessa branch é aceita como true
-                    // e Route_Compatible recebe a url salva atual que está sendo
-                    // comparada.
-                    if($this->verify_regex($how_much_vars[0])){
-                        $this->UrlData = $difereces;
-                        $this->Route_Compatible = $route['url'];
-                        $this->Route_Controller = $route['controller'];
-                        $this->Route_Action = $route['action'];
-                        break;
+            // Verifica se o verbo http é o mesmo.
+            if($route['Request Method'] == $this->Request_Method){
+                // Primeira subcomparação: Verifica igualdade na quantidade de branches
+                if(count($url_tree_keys) == count($route_url_keys)){
+                    // Segunda subcomparação: Verifica igualdade branch à branch
+                    if( count($difereces) == count($how_much_vars[0]) ){
+                        // Chama função que verifica se isso é uma variável de url {id}
+                        // se for a compatibilidade dessa branch é aceita como true
+                        // e Route_Compatible recebe a url salva atual que está sendo
+                        // comparada.
+                        if($this->verify_regex($how_much_vars[0])){
+                            $this->UrlData = $difereces;
+                            $this->Route_Compatible = $route['url'];
+                            $this->Route_Controller = $route['controller'];
+                            $this->Route_Action = $route['action'];
+                            break;
+                        }
+                    }
+                    // Caso a primeira subcomparação seja falsa Route_Compatible ganha null
+                    // e o laço então damos continue, pra que possamos testar o a proxima url salva
+                    else{
+                        $this->Route_Compatible = null;
+                        continue;
                     }
                 }
                 // Caso a primeira subcomparação seja falsa Route_Compatible ganha null
@@ -135,12 +143,6 @@ class Router {
                     $this->Route_Compatible = null;
                     continue;
                 }
-            }
-            // Caso a primeira subcomparação seja falsa Route_Compatible ganha null
-            // e o laço então damos continue, pra que possamos testar o a proxima url salva
-            else{
-                $this->Route_Compatible = null;
-                continue;
             }
         endforeach;
         // Depois de ter percorrido as urls ou ter encontrado uma compatível e saído do laço

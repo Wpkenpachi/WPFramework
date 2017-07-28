@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
-class Controller {
+use \Framework\Core;
+
+class Controller extends Core{
+
 
     protected $Paths;
 

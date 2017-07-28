@@ -1,7 +1,7 @@
 {
     "WP": {
-        "make": ["controller", "services"],
-        "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps", "services"],
+        "make": ["controller"],
+        "listing": ["controllers","repositorys", "views", "templates", "routes", "dbmaps"],
         "map": ["up", "down"]
     },
     "CMD_REPLACE":{
